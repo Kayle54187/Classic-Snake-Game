@@ -7,15 +7,37 @@
 
 using namespace std;
 
-int main(){
+Color green = {173, 204, 96, 255};
+Color darkGreen = {43, 51, 24, 255};
 
-    cout<<"Starting Game"<<endl;
+int cellSize = 30;
+int cellCount = 25;
 
-    InitWindow(750, 750, "Retro Snake");
+class Food {
+public:
+    Vector2 position = {5, 6};
 
-    while(!WindowShouldClose()){
+    void Draw() {
+        DrawRectangle(position.x * cellSize, position.y * cellSize, cellSize, cellSize, darkGreen);
+    }
+};
+
+
+int main() {
+
+    cout << "Starting Game" << endl;
+
+    InitWindow(cellSize * cellCount, cellSize * cellCount, "Retro Snake");
+
+    Food food = Food();
+
+    while (!WindowShouldClose()) {
         BeginDrawing();
-        
+
+        //Drawing
+        ClearBackground(green);
+        food.Draw();
+
         EndDrawing();
     }
 
